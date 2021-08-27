@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="javasc.js"></script>
+	<title>Document</title>
+</head>
+<style type="text/css">
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	main{
+		width: 100vw;
+		height: 100vh;
+	}
+
+	.box{
+		margin: 0 auto;
+		margin-top: 20px;
+		width: 340px;
+		height: auto;
+		padding: 20px;
+		border: 1px solid #B0BEC5;
+		background-color: #FAFAFA;
+		position: relative;
+		display: flex;
+		flex-direction: column;
+	}
+
+	.valor{
+		width: auto;
+		height: auto;
+		margin-left: 25px;
+		margin-bottom: 1px;
+	}
+
+	#result{
+		margin-left: 0;
+	}
+
+	.btn{
+		padding: 5px;
+		height: 30px;
+		background-color: #81C784;
+		color: #fff;
+		margin-top: 5px;
+		border: 2px solid #BDBDBD;
+		border-radius: 10px;
+	}
+</style>
+<body>
+	<main>
+		<div class="box">
+			<label>Digite o valor 1:
+				<input class="valor" type="text" id="valor1" name=""><br>
+			</label>
+			<label>Digite o valor 2:
+				<input class="valor" type="text" id="valor2" name=""><br>
+			</label>
+			<label>Informe o resultado:
+				<input class="valor" type="text" id="result" name=""><br>
+			</label>
+
+			<div class="estilobtn">
+				<input class="btn" type="button" value="Confirmar resultado" id="soma" name="">
+			</div>
+		</div>
+	</main>
+</body>
+</html>

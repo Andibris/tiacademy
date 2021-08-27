@@ -1,0 +1,32 @@
+-- if (condição){
+	execute;
+}
+
+só executa se a condição for verdadeira;
+
+
+
+-- if(condição){
+	executar esse bloco;
+	}
+-- else{
+	executar esse bloco;
+} 
+
+
+
+é dar opções ao usuario
+switch(n){
+	case 1:
+	//começa aqui se n===1
+	//executa o bloco de codigo #1.
+break; //interrompe aqui
+case 2:
+	//começa aqui se n===2
+	//executa o bloco de codigo #2.
+break; interrompe aqui
+
+default://se nenhuma condição for atendida...
+	//executa o bloco de cod #3.
+break; interrompe aqui.
+}

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>header_footer</title>
+</head>
+<style>
+	body{
+		margin: 0;
+		padding: 0;
+		
+	}
+
+	header, footer{
+		width: 100%;
+		height: 40px;
+		border-bottom: 1px solid #000;
+		background-color: #FF9800;
+		position: fixed;
+	}
+
+	header{
+		top: 0;
+	}
+
+	footer{
+		border-bottom: 0;
+		height: 60px;
+		border-top: 1px solid #000;
+		bottom: 0;
+	}
+
+	main{
+		display: flex;
+		width: 80%;
+		height: auto;
+		margin: 0 auto;
+		margin-top: 50px;
+	}
+
+	p{
+		padding: 5px;
+	}
+
+	#content{
+		display: flex;
+		width: 100%;
+		height: auto;
+	}
+
+	#quadrado{
+		width: 20px;
+		height: 20px;
+		background-color: #FF9800;
+		margin-top: 600px;
+		position: absolute;
+	}
+
+	@media screen and (max-width: 700px){
+		#content{
+			display: block;
+		}
+
+		#quadrado{
+			width: 0;
+			height: 0;
+		}
+	}
+
+</style>
+<body>
+	<header></header>
+	<main>
+		<div id="content">
+			<div id="quadrado"></div>
+
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis vero ex nulla necessitatibus placeat pariatur, distinctio voluptatum ea voluptas unde amet perferendis excepturi commodi, harum dolorem dicta eum. Provident, nihil.</p>
+			
+			<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis vero ex nulla necessitatibus placeat pariatur, distinctio voluptatum ea voluptas unde amet perferendis excepturi commodi, harum dolorem dicta eum. Provident, nihil.</p>
+			
+		</div>
+		
+
+	</main>
+	<footer></footer>
+</body>
+</html>

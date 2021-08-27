@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Document</title>
+</head>
+<style>
+	*{
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+
+	main{
+		display: flex;
+		width: 80%;
+		height: 200px;
+		margin: 0 auto;
+		background-color: tomato;
+	}
+
+	.filho{
+		width: 50%;
+		height: auto;
+	}
+/*media screen and é pra algo acontecer qdo chegar na dimensao minima estipulada*/
+
+	@media screen and (max-width: 700px) {
+		main{
+			background-color: cyan;
+			flex-direction: column;
+
+		}
+
+		.filho{
+			width: 100%;
+		}
+		}
+		
+</style>
+<body>
+	<main>
+		<div class="filho">
+			<p>Lorem ipsum, dolor, sit amet consectetur adipisicing elit. Reprehenderit dolor rem, cum optio rerum. Mollitia unde earum quae deleniti pariatur, iure illum eligendi maiores, officia, debitis neque, perspiciatis vel omnis.</p>
+		</div>
+		<div class="filho">
+			<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis ullam, omnis mollitia reprehenderit itaque error quisquam molestiae deserunt. Praesentium, voluptate ipsa quisquam laudantium sint officiis porro eveniet voluptatum ad quam!</p>
+		</div>
+	</main>
+</body>
+</html>
