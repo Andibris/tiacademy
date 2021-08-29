@@ -1,7 +1,7 @@
 {
   "name": "servicesti",
   "version": "1.0.0",
-  "description": "Sistema de controle de empresa de serviços de TI",
+  "description": "Sistema de controle de uma empresa de serviços de TI",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
