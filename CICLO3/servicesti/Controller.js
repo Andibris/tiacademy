@@ -36,6 +36,90 @@ app.post('/pedidos', async(req,res)=>{
     res.send('Novo pedido criado!');
 });
 
+app.get('/listaservicos', async(req,res)=>{
+    await servico.findAll({
+        order: [['nome', 'DESC']]
+    }).then(function(servicos){
+        res.json({servicos})
+    });
+});
+
+app.get('/ofertas', async(req,res)=>{
+    await servico.count('id')
+    .then(function(servicos){
+        res.json(servicos);
+    });
+});
+
+app.get('/servico/:id', async(req,res)=>{
+    servico.findByPk(req.params.id)
+    .then(servico =>{
+        return res.json({
+            error: false,
+            servico
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Código não está cadastrado."
+        });
+    });
+});
+
+//visualize todos os clientes
+app.get('/listaclientes',async(req, res)=>{
+    await cliente.findAll({
+        raw: true
+    }).then(function(clientes){
+        res.json({clientes})
+    });
+});
+
+//visualize todos os clientes em ordem de antiguidade
+app.get('/listaclientesantig',async(req, res)=>{
+    await cliente.findAll({
+        order:[['createdAt']]
+    }).then(function(clientes){
+        res.json({clientes})
+    });
+});
+
+//visualizar todos os pedidos
+app.get('/listapedidos', async(req,res)=>{
+    await pedido.findAll({
+        raw: true
+    }).then((pedido)=>{
+        res.json({
+            pedido
+        });
+    });
+});
+
+//visualizar os pedidos em ordem de valor
+app.get('/listapedidosvalor', async(req,res)=>{
+    await pedido.findAll({
+        order:[['valor','DESC']]
+    }).then(function(pedidos){
+        res.json(pedidos);
+    });
+});
+
+//numero de clientes
+app.get('/numclientes', async(req,res)=>{
+    await cliente.count('id')
+    .then(function(clientes){
+        res.json(clientes);
+    });
+});
+
+//quantidade de pedidos
+app.get('/qtdpedidos', async(req,res)=>{
+    await pedido.count('id')
+    .then(function(pedidos){
+        res.json(pedidos);
+    });
+});
+
 let port=process.env.PORT || 3000;
 
 app.listen(port,(req,res)=>{
