@@ -120,8 +120,16 @@ app.get('/qtdpedidos', async(req,res)=>{
     });
 });
 
+//gasto do cliente
+app.get('/somapedidos/:id',async(req,res)=>{
+    await pedido.sum('valor', {where: {ClienteId:(req.params.id)}})
+    .then(function(pedidos){
+        res.json(pedidos)
+    });
+});
+
 let port=process.env.PORT || 3000;
 
 app.listen(port,(req,res)=>{
     console.log('Servidor ativo');
-});
+})
