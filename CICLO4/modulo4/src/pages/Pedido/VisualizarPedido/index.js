@@ -1,6 +1,6 @@
 import { Container, Table } from 'reactstrap'
     
-    export const VisualizarCliente = () => {
+    export const VisualizarPedido = () => {
         return (
             <div className="p-3">
                 <Container>

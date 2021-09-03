@@ -4,6 +4,7 @@ import {Home} from './pages/Home/';
 import {VisualizarCliente} from './pages/Cliente/VisualizarCliente';
 import { Menu } from './components/Menu';
 import { VisualizarServico } from './pages/Servico/VisualizarServico';
+import { VisualizarPedido } from './pages/Pedido/VisualizarPedido';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route exact path="/" component={Home}/>
           <Route path="/visualizarcliente" component={VisualizarCliente}/>
           <Route path="/visualizarservico" component={VisualizarServico}/>
+          <Route path="/visualizarpedido" component={VisualizarPedido}/>
         </Switch>
       </Router>
     </div>
