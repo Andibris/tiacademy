@@ -269,7 +269,7 @@ app.put('/editarpedidocliente/:id',(req,res)=>{
     });
 });
 
-let port=process.env.PORT || 3000;
+let port=process.env.PORT || 3001;
 
 app.listen(port,(req,res)=>{
     console.log('Servidor ativo');
