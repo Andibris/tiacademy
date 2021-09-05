@@ -6,6 +6,8 @@ import { Menu } from './components/Menu';
 import { VisualizarServico } from './pages/Servico/VisualizarServico';
 import { VisualizarPedido } from './pages/Pedido/VisualizarPedido';
 import { Servico } from './pages/Servico/VisualizarServico/Servico';
+import { Cliente } from './pages/Cliente/Cliente';
+import { Pedido } from './pages/Pedido/Pedido';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/visualizarservico" component={VisualizarServico}/>
           <Route path="/visualizarpedido" component={VisualizarPedido}/>
           <Route path="/servico/:id" component={Servico}/>
+          <Route path="/cliente/:id" component={Cliente}/>
+          <Route path="/pedido/:id" component={Pedido}/>
         </Switch>
       </Router>
     </div>

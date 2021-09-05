@@ -66,6 +66,36 @@ app.get('/servico/:id', async(req,res)=>{
     });
 });
 
+app.get('/cliente/:id', async(req,res)=>{
+    cliente.findByPk(req.params.id)
+    .then(cliente =>{
+        return res.json({
+            error: false,
+            cliente
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Código não está cadastrado."
+        });
+    });
+});
+
+app.get('/pedido/:id', async(req,res)=>{
+    pedido.findByPk(req.params.id)
+    .then(pedido =>{
+        return res.json({
+            error: false,
+            pedido
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Código não está cadastrado."
+        });
+    });
+});
+
 //visualize todos os clientes
 app.get('/listaclientes',async(req, res)=>{
     await cliente.findAll({
