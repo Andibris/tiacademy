@@ -23,11 +23,30 @@ app.post('/clientes', async(req,res)=>{
 });
 
 app.post('/servicos', async(req,res)=>{
-    let create=await servico.create(
+
+    function aguardar(ms){
+        return new Promise((resolve)=>{
+            setTimeout(resolve.ms);
+        });
+    };
+
+    await servico.create(
         req.body
-    );
-    res.send('Serviço foi inserido!');
+    ).then(function (){
+        return res.json({
+            error:false,
+            message: "Serviço criado com sucesso!"
+        })
+    }).catch(function(erro){
+        return res.status(400).json({
+            error:true,
+            message: "Erro ao cadastrar serviço."
+        })
+    });
+    await aguardar(3000);
 });
+
+
 
 app.post('/pedidos', async(req,res)=>{
     let create=await pedido.create(
@@ -43,6 +62,7 @@ app.get('/listaservicos', async(req,res)=>{
         res.json({servicos})
     });
 });
+
 
 app.get('/ofertas', async(req,res)=>{
     await servico.count('id')

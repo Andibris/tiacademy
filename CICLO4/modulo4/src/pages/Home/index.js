@@ -6,7 +6,7 @@ export const Home = () => {
             <Container>
                 <div className="d-flex">
                     <div className="mr-auto p-2">
-                        <h1>Página inicial</h1>
+                        <h3>Página inicial</h3>
                     </div>
                     <div className="p-2">
                         <a href="/visualizarcliente"
