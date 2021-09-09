@@ -326,6 +326,22 @@ app.delete('/apagarcliente/:id', (req,res)=>{
     });
 });
 
+app.delete('/apagarservico/:id', (req,res)=>{
+    servico.destroy({
+        where: {id: req.params.id}
+    }).then(function(){
+        return res.json({
+        error: false,
+        message: "Serviço excluido."
+    });
+}).catch(function(erro){
+    return res.status(400).json({
+        error: true,
+        message: "Não foi possível excluir o serviço."
+        });
+    });
+});
+
 //desafios aula 4
 app.get('/pedidoscliente/:id', async (req, res)=>{
     await pedido.findAll({ where: { ClienteId: [req.params.id]  } })

@@ -11,6 +11,7 @@ import { Pedido } from './pages/Pedido/Pedido';
 import { Cadastrar } from './pages/Servico/Cadastrar';
 import { CadastrarCli } from './pages/Cliente/Cadastrar';
 import { CadastrarPed } from './pages/Pedido/Cadastrar';
+import { Editar } from './pages/Servico/Editar';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="/cadastrarservico" component={Cadastrar}/>
           <Route path="/cadastrarcliente" component={CadastrarCli}/>
           <Route path="/cadastrarpedido" component={CadastrarPed}/>
+          <Route path="/editarservico/:id" component={Editar}/>
         </Switch>
       </Router>
     </div>

@@ -34,9 +34,11 @@ export const Servico = (props) => {
                     </div>
                     <div className="p-2">
                         <Link to="/visualizarservico"
-                            className="btn btn-outline-primary btn-sm">
+                            className="btn btn-outline-primary btn-sm m-1">
                             Serviços
                         </Link>
+                        <Link to={"/editarservico/" + data.id}
+                            className="btn btn-outline-warning btn-sm">Editar</Link>
                     </div>
                 </div>
                 <dl className="row">
