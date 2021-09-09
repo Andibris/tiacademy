@@ -16,10 +16,27 @@ app.get('/', function(req,res){
 });
 
 app.post('/clientes', async(req,res)=>{
-    let create=await cliente.create(
+    
+    function aguardar(ms){
+        return new Promise((resolve)=>{
+            setTimeout(resolve.ms);
+        });
+    };
+
+    await cliente.create(
         req.body
-    );    
-    res.send('Novo cliente cadastrado!');
+    ).then(function (){
+        return res.json({
+            error:false,
+            message: "Novo cliente cadastrado!"
+        })
+    }).catch(function(erro){
+        return res.status(400).json({
+            error:true,
+            message: "Erro ao cadastrar cliente."
+        })
+    });
+    await aguardar(3000);
 });
 
 app.post('/servicos', async(req,res)=>{
@@ -49,10 +66,26 @@ app.post('/servicos', async(req,res)=>{
 
 
 app.post('/pedidos', async(req,res)=>{
-    let create=await pedido.create(
+    function aguardar(ms){
+        return new Promise((resolve)=>{
+            setTimeout(resolve.ms);
+        });
+    };
+
+    await pedido.create(
         req.body
-    );
-    res.send('Novo pedido criado!');
+    ).then(function (){
+        return res.json({
+            error:false,
+            message: "Pedido criado com sucesso!"
+        })
+    }).catch(function(erro){
+        return res.status(400).json({
+            error:true,
+            message: "Erro ao cadastrar pedido."
+        })
+    });
+    await aguardar(3000);
 });
 
 app.get('/listaservicos', async(req,res)=>{

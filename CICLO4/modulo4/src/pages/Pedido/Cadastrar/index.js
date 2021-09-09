@@ -4,11 +4,13 @@ import { Link } from "react-router-dom"
 import { Alert, Button, Container, Form, FormGroup, Input, Label, Spinner } from "reactstrap"
 import { api } from "../../../config";
 
-export const Cadastrar = () => {
+export const CadastrarPed = () => {
 
-    const[servico, setServico] = useState({
-        nome:'',
-        descricao:''
+    const[pedido, setPedido] = useState({
+        ClienteId:'',
+        ServicoId:'',
+        valor:'',
+        data:'',
     });
 
     const [status, setStatus] = useState({
@@ -17,11 +19,11 @@ export const Cadastrar = () => {
         message:''
     });
 
-    const valorInput = e => setServico({
-        ...servico,[e.target.name]:e.target.value
+    const valorInput = e => setPedido({
+        ...pedido,[e.target.name]:e.target.value
     });
     
-    const cadServico = async e =>{
+    const cadPedido = async e =>{
         e.preventDefault();
 
         setStatus({
@@ -32,7 +34,7 @@ export const Cadastrar = () => {
             'Content-Type':'application/json'
         };
 
-        await axios.post(api + "/servicos", servico,{headers})
+        await axios.post(api + "/pedidos", pedido,{headers})
         .then((response) => {
             if(response.data.error){
                 setStatus({
@@ -62,10 +64,10 @@ export const Cadastrar = () => {
             <Container>
                 <div className="d-flex">
                     <div className="mr-auto p-2">
-                        <h3>Cadastrar Serviço</h3>
+                        <h3>Cadastrar Pedido</h3>
                     </div>
                     <div className="p-2">
-                        <Link to="/visualizarservico"
+                        <Link to="/visualizarpedido"
                             className="btn btn-outline-primary btn-sm">
                             Listar
                         </Link>
@@ -80,16 +82,24 @@ export const Cadastrar = () => {
                 {status.type === 'success'?<Alert color="success">
                     {status.message}</Alert>:""}
 
-                <Form className="p-2" onSubmit={cadServico}>
+                <Form className="p-2" onSubmit={cadPedido}>
                     <FormGroup className="p-2">
-                        <Label>Nome</Label>
-                        <Input type="text" name="nome" placeholder="Nome do Serviço" onChange={valorInput}/>
+                        <Label>Cliente</Label>
+                        <Input type="text" name="ClienteId" placeholder="Cliente" onChange={valorInput}/>
                     </FormGroup>
                     <FormGroup className="p-2">
-                        <Label>Descrição</Label>
-                        <Input type="text" name="descricao" placeholder="Descrição do Serviço" onChange={valorInput}/>
+                        <Label>Serviço</Label>
+                        <Input type="text" name="ServicoId" placeholder="Serviço" onChange={valorInput}/>
                     </FormGroup>
-
+                    <FormGroup className="p-2">
+                        <Label>Valor</Label>
+                        <Input type="text" name="valor" placeholder="Valor" onChange={valorInput}/>
+                    </FormGroup>
+                    <FormGroup className="p-2">
+                        <Label>Data</Label>
+                        <Input type="text" name="data" placeholder="Data" onChange={valorInput}/>
+                    </FormGroup>
+                    
                     {status.formSave ? 
                         <Button type="submit" outline color="info" disabled>Salvando...
                             <Spinner size="sm" color="info"/></Button>:

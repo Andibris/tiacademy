@@ -72,7 +72,7 @@ export const VisualizarServico = () => {
                         ))}
                     </tbody>
                 </Table>
-            </Container >
-        </div >
+            </Container>
+        </div>
     )
 }

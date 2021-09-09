@@ -9,6 +9,8 @@ import { Servico } from './pages/Servico/Servico';
 import { Cliente } from './pages/Cliente/Cliente';
 import { Pedido } from './pages/Pedido/Pedido';
 import { Cadastrar } from './pages/Servico/Cadastrar';
+import { CadastrarCli } from './pages/Cliente/Cadastrar';
+import { CadastrarPed } from './pages/Pedido/Cadastrar';
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
           <Route path="/cliente/:id" component={Cliente}/>
           <Route path="/pedido/:id" component={Pedido}/>
           <Route path="/cadastrarservico" component={Cadastrar}/>
+          <Route path="/cadastrarcliente" component={CadastrarCli}/>
+          <Route path="/cadastrarpedido" component={CadastrarPed}/>
         </Switch>
       </Router>
     </div>
