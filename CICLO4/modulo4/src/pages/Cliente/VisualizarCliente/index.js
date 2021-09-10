@@ -28,6 +28,26 @@ export const VisualizarCliente = () => {
             });
     }
 
+    const apagarCliente = async (idCliente) => {
+        console.log(idCliente);
+
+        const headers = {
+            'Content-Type': 'application/json'
+        }
+
+        await axios.delete(api + "/apagarcliente/" + idCliente, { headers })
+        .then((response)=>{
+            console.log(response.data.error);
+            getClientes();
+        })
+        .catch(()=>{
+            setStatus({
+                type: 'error',
+                message: 'Erro: Não foi possível conectar à API.'
+            });
+        });
+    }
+
     useEffect(() => {
         getClientes();
     }, []);
@@ -43,7 +63,7 @@ export const VisualizarCliente = () => {
                     </div>
                     <div className="p-2">
                         <Link to="/cadastrarcliente"
-                            className="btn btn-outline-primary btn-sm">
+                            className="btn btn-outline-success btn-sm">
                             Cadastrar
                         </Link>
                     </div>
@@ -66,7 +86,11 @@ export const VisualizarCliente = () => {
                                 <td>{item.endereco}</td>
                                 <td ClassName="text-center">
                                     <Link to={"/cliente/" + item.id}
-                                        className="btn btn-outline-primary btn-sm">Consultar</Link>
+                                        className="btn btn-outline-primary btn-sm m-1">Consultar</Link>
+                                    <Link to={"/editarcliente/" + item.id}
+                                        className="btn btn-outline-warning btn-sm">Editar</Link>
+                                    <span className="btn btn-outline-danger btn-sm m-1"
+                                        onClick={() => apagarCliente(item.id)}>Excluir</span>
                                 </td>
                             </tr>
                         ))}

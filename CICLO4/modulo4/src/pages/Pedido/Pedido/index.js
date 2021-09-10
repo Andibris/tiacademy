@@ -33,10 +33,8 @@ export const Pedido = (props) => {
                         <h1>Informações do Pedido</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/visualizarpedido"
-                            className="btn btn-outline-primary btn-sm">
-                            Pedidos
-                        </Link>
+                        <Link to="/visualizarpedido" className="btn btn-outline-primary btn-sm m-1">Pedidos</Link>
+                        <Link to={"/editarpedido/" + data.id} className="btn btn-outline-warning btn-sm">Editar</Link>
                     </div>
                 </div>
                 <dl className="row">

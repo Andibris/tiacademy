@@ -63,7 +63,7 @@ export const VisualizarServico = () => {
                     </div>
                     <div className="p-2">
                         <Link to="/cadastrarservico"
-                            className="btn btn-outline-primary btn-sm">
+                            className="btn btn-outline-success btn-sm">
                             Cadastrar
                         </Link>
                     </div>

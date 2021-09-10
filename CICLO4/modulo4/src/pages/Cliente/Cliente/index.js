@@ -33,10 +33,8 @@ export const Cliente = (props) => {
                         <h1>Informações do Cliente</h1>
                     </div>
                     <div className="p-2">
-                        <Link to="/visualizarcliente"
-                            className="btn btn-outline-primary btn-sm">
-                            Clientes
-                        </Link>
+                        <Link to="/visualizarcliente" className="btn btn-outline-primary btn-sm m-1">Clientes</Link>
+                        <Link to={"/editarcliente/" + data.id} className="btn btn-outline-warning btn-sm">Editar</Link>
                     </div>
                 </div>
                 <dl className="row">

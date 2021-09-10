@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import { Alert, Button, Container, Form, FormGroup, Input, Label, NavItem, Spinner } from 'reactstrap';
 import { api } from '../../../config';
 
-export const Editar = (props) => {
+export const EditarCli = (props) => {
 
     const [id] = useState(props.match.params.id);
     const [nome, setNome] = useState('');
-    const [descricao, setDescricao] = useState('');
+    const [endereco, setEndereco] = useState('');
+    const [cidade, setCidade] = useState('');
+    const [uf, setUf] = useState('');
+    const [nascimento, setNascimento] = useState('');
 
     const [status, setStatus] = useState({
         formSave: false,
@@ -16,7 +19,7 @@ export const Editar = (props) => {
         message: ''
     });
 
-    const edtServico = async e => {
+    const edtCliente = async e => {
         e.preventDefault();
         console.log("Editar")
 
@@ -28,7 +31,7 @@ export const Editar = (props) => {
             'Content-Type': 'application/json'
         }
 
-        await axios.put(api + "/editarservico", { id, nome, descricao }, { headers })
+        await axios.put(api + "/editarcliente", { id, nome, endereco, cidade, uf, nascimento }, { headers })
             .then((response) => {
                 setStatus({
                     formSave: false,
@@ -47,17 +50,20 @@ export const Editar = (props) => {
     };
 
     useEffect(() => {
-        const getServico = async () => {
-            await axios.get(api + "/servico/" + id)
+        const getCliente = async () => {
+            await axios.get(api + "/cliente/" + id)
                 .then((response) => {
-                    setNome(response.data.servico.nome);
-                    setDescricao(response.data.servico.descricao);
+                    setNome(response.data.cliente.nome);
+                    setEndereco(response.data.cliente.endereco);
+                    setCidade(response.data.cliente.cidade);
+                    setUf(response.data.cliente.uf);
+                    setNascimento(response.data.cliente.nascimento);
                 })
                 .catch(() => {
                     console.log("Erro: Não foi possível conectar à API.")
                 });
         }
-        getServico();
+        getCliente();
     }, [id]);
 
     return (
@@ -65,12 +71,12 @@ export const Editar = (props) => {
             <Container>
                 <div className="d-flex">
                     <div className="m-auto p-2">
-                        <h3>Editar um serviço</h3>
+                        <h3>Editar um cliente</h3>
                     </div>
                     <div>
-                        <Link to={"/visualizarservico/"}
+                        <Link to={"/visualizarcliente/"}
                             className="btn btn-outline-primary btn-sm m-1">Listar</Link>
-                        <Link to={"/servico/" + id}
+                        <Link to={"/cliente/" + id}
                             className="btn btn-outline-primary btn-sm m-1">Consultar</Link>
                     </div>
                 </div>
@@ -81,7 +87,7 @@ export const Editar = (props) => {
 
                 {status.type === 'success' ? <Alert color="success"> {status.message}</Alert> : ""}
 
-                <Form className="p-2" onSubmit={edtServico}>
+                <Form className="p-2" onSubmit={edtCliente}>
                     <FormGroup className="p-2">
                         <Label>Nome</Label>
                         <Input type="text" name="nome"
@@ -90,17 +96,38 @@ export const Editar = (props) => {
                     </FormGroup>
 
                     <FormGroup className="p-2">
-                        <Label>Descrição</Label>
-                        <Input type="text" name="descricao"
-                            placeholder="Descrição do Serviço" value={descricao}
-                            onChange={e => setDescricao(e.target.value)} />
+                        <Label>Endereço</Label>
+                        <Input type="text" name="endereco"
+                            placeholder="Endereço" value={endereco}
+                            onChange={e => setEndereco(e.target.value)} />
+                    </FormGroup>
+
+                    <FormGroup className="p-2">
+                        <Label>Cidade</Label>
+                        <Input type="text" name="cidade"
+                            placeholder="Cidade" value={cidade}
+                            onChange={e => setCidade(e.target.value)} />
+                    </FormGroup>
+
+                    <FormGroup className="p-2">
+                        <Label>Estado</Label>
+                        <Input type="text" name="uf"
+                            placeholder="Estado" value={uf}
+                            onChange={e => setUf(e.target.value)} />
+                    </FormGroup>
+
+                    <FormGroup className="p-2">
+                        <Label>Nascimento</Label>
+                        <Input type="text" name="nascimento"
+                            placeholder="Nascimento" value={nascimento}
+                            onChange={e => setNascimento(e.target.value)} />
                     </FormGroup>
 
                     {status.formSave ?
                         <Button type="submit" outline color="warning" disabled>Salvando...
                             <Spinner size="sm" color="warning" /></Button> :
                         <Button type="submit" outline color="info m-1">Salvar</Button>}
-                    <Link to={"/visualizarservico/"}
+                    <Link to={"/visualizarcliente/"}
                         className="btn btn-outline-danger btn-sm m-1 p-2">Cancelar</Link>
                 </Form>
 

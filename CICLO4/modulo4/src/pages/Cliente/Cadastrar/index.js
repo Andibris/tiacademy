@@ -108,8 +108,8 @@ export const CadastrarCli = () => {
                     {status.formSave ? 
                         <Button type="submit" outline color="info" disabled>Salvando...
                             <Spinner size="sm" color="info"/></Button>:
-                        <Button type="submit" outline color="info">Cadastrar</Button>}
-                        <Button type="reset"  outline color="info">Limpar</Button>
+                        <Button type="submit" outline color="info m-1">Cadastrar</Button>}
+                        <Button type="reset"  outline color="warning">Limpar</Button>
                 </Form>
             </Container>
         </div>

@@ -237,6 +237,22 @@ app.put('/editarservico', (req,res)=>{
     });
 });
 
+app.put('/editarcliente', (req,res)=>{
+    cliente.update(req.body,{
+        where: {id: req.body.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: "Cliente alterado com sucesso."
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Erro na alteração do cliente."
+        });
+    });
+});
+
 app.get('/servicospedidos', async(req,res)=>{
     await servico.findByPk(1, {
         include: [{all:true}]
@@ -246,6 +262,22 @@ app.get('/servicospedidos', async(req,res)=>{
 });
 
 app.put('/editarpedido', (req,res)=>{
+    pedido.update(req.body,{
+        where: {id: req.body.id}
+    }).then(function(){
+        return res.json({
+            error: false,
+            message: "Pedido alterado com sucesso."
+        });
+    }).catch(function(erro){
+        return res.status(400).json({
+            error: true,
+            message: "Erro na alteração do pedido."
+        });
+    });
+});
+
+app.put('/alterarpedido', (req,res)=>{
     pedido.update(req.body,{
         where: {ServicoId: req.body.ServicoId}
     }).then(function(){
@@ -338,6 +370,38 @@ app.delete('/apagarservico/:id', (req,res)=>{
     return res.status(400).json({
         error: true,
         message: "Não foi possível excluir o serviço."
+        });
+    });
+});
+
+app.delete('/apagarcliente/:id', (req,res)=>{
+    cliente.destroy({
+        where: {id: req.params.id}
+    }).then(function(){
+        return res.json({
+        error: false,
+        message: "Cliente excluido."
+    });
+}).catch(function(erro){
+    return res.status(400).json({
+        error: true,
+        message: "Não foi possível excluir o cliente."
+        });
+    });
+});
+
+app.delete('/apagarpedido/:id', (req,res)=>{
+    pedido.destroy({
+        where: {id: req.params.id}
+    }).then(function(){
+        return res.json({
+        error: false,
+        message: "Pedido excluido."
+    });
+}).catch(function(erro){
+    return res.status(400).json({
+        error: true,
+        message: "Não foi possível excluir o pedido."
         });
     });
 });
